@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="PyMaster is a static Python learning app with lessons, practice, and progress tracking." />
+    <title>PyMaster | Learn Python by building</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:," />
+  </head>
+  <body>
+    <div class="background-orb orb-one"></div>
+    <div class="background-orb orb-two"></div>
+
+    <header class="shell masthead">
+      <div>
+        <p class="eyebrow">Local learning, GitHub Pages friendly</p>
+        <h1>PyMaster</h1>
+        <p class="masthead-copy">
+          Short Python lessons, practical exercises, and browser-based feedback so you can learn concepts instead of grinding random puzzles.
+        </p>
+      </div>
+
+      <aside class="status-card card">
+        <p class="eyebrow">Progress</p>
+        <div class="progress-ring" aria-hidden="true">
+          <div class="progress-ring-inner">
+            <span id="progress-percent">0%</span>
+          </div>
+        </div>
+        <p id="progress-copy" class="status-copy">0 of 7 lessons completed.</p>
+        <button id="resume-btn" class="button button-ghost" type="button">Resume last lesson</button>
+      </aside>
+    </header>
+
+    <main class="shell layout">
+      <section class="card hero-card">
+        <div>
+          <p class="eyebrow">Why this works</p>
+          <h2>Read one idea, write one function, and get feedback right away.</h2>
+          <p class="hero-copy">
+            The site runs entirely in the browser with Pyodide, so it works on GitHub Pages while still letting you practice actual Python.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#lessons">Start learning</a>
+          <a class="button button-ghost" href="#workspace">Open editor</a>
+        </div>
+      </section>
+
+      <section class="card insight-grid">
+        <article>
+          <p class="eyebrow">Focus</p>
+          <h3>Educational instead of competitive</h3>
+          <p>Each challenge explains the pattern first so you can learn how to think, not just what to type.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Feedback</p>
+          <h3>Helpful, not cryptic</h3>
+          <p>Checks show expected values, actual values, and a concrete hint when something fails.</p>
+        </article>
+        <article>
+          <p class="eyebrow">Progress</p>
+          <h3>Track what you finish</h3>
+          <p>Your completions and drafts are saved locally so you can come back without starting over.</p>
+        </article>
+      </section>
+
+      <section id="lessons" class="card section-block">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Lesson library</p>
+            <h2>Seven focused lessons</h2>
+          </div>
+          <p class="section-note">Pick one lesson card to load its challenge into the editor below.</p>
+        </div>
+        <div id="lesson-grid" class="lesson-grid"></div>
+      </section>
+
+      <section id="workspace" class="workspace-grid">
+        <article class="card lesson-panel">
+          <div class="lesson-panel-top">
+            <div>
+              <p id="lesson-level" class="tag">Warm up</p>
+              <h2 id="lesson-title">Variables and strings</h2>
+              <p id="lesson-summary" class="lede"></p>
+            </div>
+            <button id="mark-done-btn" class="button button-ghost" type="button">Mark complete</button>
+          </div>
+
+          <div class="detail-grid">
+            <article>
+              <h3>What you are learning</h3>
+              <p id="lesson-why"></p>
+              <ul id="lesson-takeaways" class="list"></ul>
+            </article>
+
+            <article class="callout">
+              <h3 id="challenge-title">Challenge</h3>
+              <p id="challenge-prompt"></p>
+              <div class="callout-grid">
+                <div>
+                  <p class="eyebrow">Starter</p>
+                  <pre id="starter-preview" class="code-preview"></pre>
+                </div>
+                <div>
+                  <p class="eyebrow">Hints</p>
+                  <ul id="challenge-hints" class="list"></ul>
+                </div>
+              </div>
+            </article>
+          </div>
+        </article>
+
+        <article class="card editor-panel">
+          <div class="editor-toolbar">
+            <div>
+              <p class="eyebrow">Practice editor</p>
+              <h3>Write Python here</h3>
+            </div>
+            <div class="toolbar-actions">
+              <button id="run-btn" class="button button-primary" type="button">Run checks</button>
+              <button id="reset-btn" class="button button-ghost" type="button">Reset starter</button>
+            </div>
+          </div>
+
+          <div id="editor" class="editor-surface" aria-label="Python editor"></div>
+
+          <div class="editor-meta">
+            <p id="editor-status" class="status-copy">Loading editor and Python runtime...</p>
+            <p id="attempt-count" class="status-copy">No attempts yet.</p>
+          </div>
+
+          <section id="feedback" class="feedback-panel">
+            <p class="eyebrow">Feedback</p>
+            <div id="feedback-body" class="feedback-body">
+              Select a lesson and run your code to see test results here.
+            </div>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <footer class="shell footer">
+      <p>
+        Built to run on GitHub Pages. For deployment, push this repo to GitHub and enable Pages from the main branch root.
+      </p>
+    </footer>
+
+    <noscript>This app needs JavaScript to load the lessons and run the browser-based Python checks.</noscript>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/mode-python.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.6/theme-tomorrow_night_bright.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
